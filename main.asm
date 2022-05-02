@@ -1,4 +1,27 @@
 [org 0x7c00]
+[bits 16]
+
+section .text
+	global main
+
+main:
+cli
+jmp 0x0000:ZeroSeg
+ZeroSeg:
+	xor ax, ax
+	mov ss, ax
+	mov ds, ax
+	mov es, ax
+	mov fs, ax
+	mov gs, ax
+	mov sp, main
+  cld
+sti
+
+push ax
+xor ax, ax
+int 0x13
+pop ax
 
 mov al, 1
 mov cl, 2
