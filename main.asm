@@ -25,15 +25,17 @@ pop ax
 
 mov al, 1
 mov cl, 2
+mov dx, 0x1234
 
 call readDisk
-
+call printh
 jmp test
 
 jmp $
 
 %include "./printf.asm"
 %include "./readDisk.asm"
+%include "./printh.asm"
 
 TEST_STR: db "Welcome to Knxr-OS...", 0x0a, 0x0d, 0
 DISK_ERR_MESSAGE: db "Disk Error", 0x0a, 0x0d, 0
