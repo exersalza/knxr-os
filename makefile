@@ -1,4 +1,4 @@
-main.bin:main.asm readDisk.asm printf.asm printh.asm
+main.bin:main.asm readDisk.asm printf.asm printh.asm enablea20.asm testa20.asm
 	nasm -fbin main.asm -o main.bin
 
 clean:

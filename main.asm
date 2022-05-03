@@ -25,17 +25,28 @@ pop ax
 
 mov al, 1
 mov cl, 2
-mov dx, 0x1234
+mov dx, [0x7c00 + 510]
 
-call readDisk
+mov ax, 0x2400
+int 0x15
+
+;call readDisk
+call testA20
+mov dx, ax
 call printh
-jmp test
+;jmp test
+
+call enableA20
+mov dx, ax
+call printh
 
 jmp $
 
 %include "./printf.asm"
 %include "./readDisk.asm"
 %include "./printh.asm"
+%include "./testa20.asm"
+%include "./enablea20.asm"
 
 TEST_STR: db "Welcome to Knxr-OS...", 0x0a, 0x0d, 0
 DISK_ERR_MESSAGE: db "Disk Error", 0x0a, 0x0d, 0
