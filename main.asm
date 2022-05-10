@@ -30,6 +30,8 @@ mov dx, [0x7c00 + 510]
 mov ax, 0x2400
 int 0x15
 
+mov si, ANDRE
+call printf
 ;call readDisk
 call testA20
 mov dx, ax
@@ -50,7 +52,7 @@ jmp $
 
 TEST_STR: db "Welcome to Knxr-OS...", 0x0a, 0x0d, 0
 DISK_ERR_MESSAGE: db "Disk Error", 0x0a, 0x0d, 0
-
+ANDRE: db "Andre Stinkt...", 0x0a, 0x0d, 0
 
 times 510-($-$$) db 0
 dw 0xaa55
